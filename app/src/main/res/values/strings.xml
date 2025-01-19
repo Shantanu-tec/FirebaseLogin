@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">AllInOne</string>
+    <string name="splashicon">SplashIcon</string>
+    <string name="username">Username:</string>
+    <string name="enter_your_username">Enter your UserName</string>
+    <string name="password">Password:</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an Account?</string>
+    <string name="please_signup"><u>Please SignUp!</u></string>
+    <string name="enter_confirm_password">Enter Confirm Password</string>
+    <string name="signup">SignUp</string>
+    <string name="already_have_an_acccount">Already have an Acccount?</string>
+    <string name="please_login"><u>Please Login!</u></string>
+    <string name="email">Email:</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="user_email_address">User Email Address:</string>
+    <string name="logout">Logout</string>
+    <string name="login_signup_using_phone">Login/Signup using Phone</string>
+    <string name="login_signup_using_email">Login/Signup using Email</string>
+    <string name="phone_number">Phone Number:</string>
+    <string name="enter_your_phone_number">Enter Your Phone Number</string>
+    <string name="verify_otp">Verify Otp</string>
+    <string name="resend_otp">Resend Otp</string>
+</resources>

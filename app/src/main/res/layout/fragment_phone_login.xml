@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SecondActivity">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="40dp">
+
+
+        <ImageView
+            android:id="@+id/instituteLogo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/splash_icon" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userNameText"
+            android:text="@string/phone_number"
+            android:layout_marginTop="60dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_below="@id/instituteLogo"/>
+
+
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:padding="10dp"
+            android:background="@drawable/edittext_bg"
+            android:layout_below="@id/userNameText"
+            android:hint="@string/enter_your_phone_number" />
+
+
+
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneNumber"
+            android:layout_marginTop="50dp"
+            android:id="@+id/login"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

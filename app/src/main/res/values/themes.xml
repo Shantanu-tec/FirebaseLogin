@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.AllInOne" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/themeColor</item>
+         <item name="colorSecondary">@color/light_blue</item>
+
+    </style>
+
+    <style name="Theme.AllInOne" parent="Base.Theme.AllInOne" />
+</resources>
