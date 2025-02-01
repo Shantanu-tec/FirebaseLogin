@@ -98,7 +98,7 @@ class PhoneLoginFragment : Fragment() {
             val otpFragment = OtpFragment()
             otpFragment.arguments = bundle
 
-            requireActivity().showToastLong("Otp is : $verificationId")
+//            requireActivity().showToastLong("Otp is : $verificationId")
 
 
             (requireActivity() as SecondActivity).replaceFragment(otpFragment)

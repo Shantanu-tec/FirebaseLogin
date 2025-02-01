@@ -55,7 +55,8 @@ class LoginFragment : Fragment() {
     private fun validate() = binding.apply{       
         if (userName.text.toString().isEmpty()){
             userName.error = "Email is Empty"
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(userName.text.toString()).matches()) {
+        }
+        else if (!Patterns.EMAIL_ADDRESS.matcher(userName.text.toString()).matches()) {
             userName.error = "Email is not valid"
         }else if (passWord.text.toString().isEmpty()){
             passWord.error = "Password is Empty"

@@ -25,6 +25,10 @@ class OtpFragment : Fragment() {
     var phoneNumber = ""
     var otpFromUser = ""
 
+    //ListView,RecyclerView
+    //ViewPager,TabLayout
+    //Firebase realtime database :EventListeners
+
     private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
