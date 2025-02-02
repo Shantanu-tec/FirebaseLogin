@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.drm.allinone.ThirdActivity
 import com.drm.allinone.User
 import com.drm.allinone.databinding.ItemListviewBinding
-import com.drm.allinone.utils.showToastShort
+import com.drm.allinone.utils.printDebug
 
 class UserAdapter(
     private val context: Context,
@@ -26,9 +26,15 @@ class UserAdapter(
         holder.binding.apply {
             name.text = userList[position].name
             graduation.text = userList[position].graduation
+//            printDebug("Before onClick isChecked at position $position : ${userList[position].isChecked}")
+            checkbox.isChecked = userList[position].isChecked
 
             main.setOnClickListener {
-                (context as ThirdActivity).showToastShort("${userList[position].name} is a ${userList[position].graduation}")
+//                userList[position].isChecked = !userList[position].isChecked
+                userList.forEachIndexed { index, user ->
+                    user.isChecked = index == position
+                }
+                notifyDataSetChanged()
             }
         }
 

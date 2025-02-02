@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.drm.allinone.adapter.UserAdapter
 import com.drm.allinone.databinding.ActivityThirdBinding
 import com.drm.allinone.utils.goToActivityWithFinish
+import com.drm.allinone.viewpager.NormalViewPagerAdapter
 import com.google.firebase.auth.FirebaseAuth
 
 class ThirdActivity : AppCompatActivity() {
@@ -44,19 +45,24 @@ class ThirdActivity : AppCompatActivity() {
 
     //Horizontal views, Vertical view, Grid View
 
-    private fun setUI() = binding.apply {
-        val userList = arrayListOf<User>()
 
-        userList.add(User(R.mipmap.ic_launcher, "Rahul", "Post Graduate"))
-        userList.add(User(R.mipmap.ic_launcher, "Kumar", "Post Graduate"))
-        userList.add(User(R.mipmap.ic_launcher, "Tarun", "Under Graduation"))
-        userList.add(User(R.mipmap.ic_launcher, "Karan", "Under Graduation"))
-        userList.add(User(R.mipmap.ic_launcher, "Shantanu", "Working"))
-        userList.add(User(R.mipmap.ic_launcher, "Chaudhary", "Working"))
+    //to maintain checklist
+    var userList = arrayListOf<User>()
+
+    private fun setUI() = binding.apply {
+
+
+
+        userList.add(User(R.mipmap.ic_launcher, "Joggers", "Post Graduate",false))
+        userList.add(User(R.mipmap.ic_launcher, "Track suits", "Post Graduate",false))
+        userList.add(User(R.mipmap.ic_launcher, "T-shirts", "Under Graduation",false))
+        userList.add(User(R.mipmap.ic_launcher, "Shirts", "Under Graduation",false))
+        userList.add(User(R.mipmap.ic_launcher, "Pants", "Working",false))
+        userList.add(User(R.mipmap.ic_launcher, "Yoga pants", "Working",false))
 
 
 //        for (i in 1..100){
-//            userList.add(User(R.mipmap.ic_launcher, "User $i", "Learning"))
+//            userList.add(User(R.mipmap.ic_launcher, "User $i", "Learning",false))
 //        }
 
 
@@ -64,6 +70,20 @@ class ThirdActivity : AppCompatActivity() {
             GridLayoutManager(this@ThirdActivity, 2)
 
         recyclerView.adapter = UserAdapter(this@ThirdActivity, userList)
+
+
+        val imageList = ArrayList<Int>()
+
+        imageList.add(R.mipmap.image1)
+        imageList.add(R.mipmap.image2)
+        imageList.add(R.mipmap.image3)
+        imageList.add(R.mipmap.image2)
+        imageList.add(R.mipmap.image3)
+        imageList.add(R.mipmap.image1)
+
+
+
+        viewPager.adapter = NormalViewPagerAdapter(this@ThirdActivity, imageList)
 
 
     }

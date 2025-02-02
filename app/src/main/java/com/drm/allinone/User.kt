@@ -4,4 +4,5 @@ data class User(
     var image:Int,
     var name:String,
     var graduation:String,
+    var isChecked:Boolean
 )
