@@ -14,7 +14,9 @@ import com.drm.allinone.fragments.FeedsFragment
 import com.drm.allinone.fragments.HomeFragment
 import com.drm.allinone.models.FragmentModels
 import com.drm.allinone.utils.goToActivityWithFinish
+import com.drm.allinone.viewpager.FragmentStateAdapterDemo
 import com.drm.allinone.viewpager.FragmentViewPager
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 
 class ThirdActivity : AppCompatActivity() {
@@ -45,6 +47,7 @@ class ThirdActivity : AppCompatActivity() {
     //FragmentStatePagerAdapter with TabLayout
 
     //ViewPager2
+    //FragmentStateAdapter
 
     private fun setUI() = binding.apply {
         tabLayout.tabTextColors =
@@ -61,7 +64,7 @@ class ThirdActivity : AppCompatActivity() {
         tabLayout.addTab(chatsTab)
 
 
-        val adapter = FragmentViewPager(supportFragmentManager)
+        val adapter = FragmentStateAdapterDemo(supportFragmentManager,lifecycle)
 
         adapter.addFragment(
             FragmentModels(
@@ -89,9 +92,17 @@ class ThirdActivity : AppCompatActivity() {
         )
 
 
-        fragmentViewPager.setAdapter(adapter)
+        fragmentViewPager.adapter = adapter
 
-        tabLayout.setupWithViewPager(fragmentViewPager)
+        TabLayoutMediator(tabLayout,fragmentViewPager) { tab, position ->
+            tab.text = adapter.fragmentList[position].title
+        }.attach()
+
+
+
+//        fragmentViewPager.setAdapter(adapter)
+//
+//        tabLayout.setupWithViewPager(fragmentViewPager)
 
 
     }

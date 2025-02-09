@@ -11,6 +11,7 @@ import com.drm.allinone.User
 import com.drm.allinone.adapter.UserAdapter
 import com.drm.allinone.databinding.FragmentHomeBinding
 import com.drm.allinone.viewpager.NormalViewPagerAdapter
+import com.drm.allinone.viewpager.ViewPager2AdapterDemo
 import com.google.android.material.tabs.TabLayout.Tab
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -83,7 +84,8 @@ class HomeFragment : Fragment() {
 
 
 
-        viewPager.adapter = NormalViewPagerAdapter(requireActivity(), imageList)
+//        viewPager.adapter = NormalViewPagerAdapter(requireActivity(), imageList)
+        viewPager.adapter = ViewPager2AdapterDemo(requireActivity(),imageList)
 
         setAutoScroll(true)
 
