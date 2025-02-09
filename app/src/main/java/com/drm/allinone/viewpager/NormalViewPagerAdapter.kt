@@ -9,28 +9,30 @@ import androidx.cardview.widget.CardView
 import androidx.viewpager.widget.PagerAdapter
 import com.drm.allinone.R
 
-class NormalViewPagerAdapter(private val context: Context, private val imageList: ArrayList<Int>) :
-    PagerAdapter() {
+class NormalViewPagerAdapter(
+    private val context: Context,
+    private val imageList: ArrayList<Int>
+) : PagerAdapter() {
+    override fun getCount() = imageList.size
 
+    override fun isViewFromObject(view: View, `object`: Any) = view == `object`
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_imageview, container, false)
+        val item = LayoutInflater.from(context).inflate(R.layout.item_imageview, container, false)
 
-        val imageView: ImageView = view.findViewById(R.id.imageView)
+        val imageView:ImageView = item.findViewById(R.id.imageView)
 
         imageView.setImageResource(imageList[position])
 
+        container.addView(item)
 
-        container.addView(view)
-
-        return view
+        return item
     }
+
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
         container.removeView(`object` as CardView)
     }
 
-    override fun getCount() = imageList.size
 
-    override fun isViewFromObject(view: View, `object`: Any) = view == `object`
 }

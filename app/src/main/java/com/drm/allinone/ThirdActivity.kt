@@ -1,16 +1,20 @@
 package com.drm.allinone
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.drm.allinone.adapter.UserAdapter
 import com.drm.allinone.databinding.ActivityThirdBinding
+import com.drm.allinone.fragments.ChatFragment
+import com.drm.allinone.fragments.FeedsFragment
+import com.drm.allinone.fragments.HomeFragment
+import com.drm.allinone.models.FragmentModels
 import com.drm.allinone.utils.goToActivityWithFinish
-import com.drm.allinone.viewpager.NormalViewPagerAdapter
+import com.drm.allinone.viewpager.FragmentViewPager
 import com.google.firebase.auth.FirebaseAuth
 
 class ThirdActivity : AppCompatActivity() {
@@ -36,66 +40,78 @@ class ThirdActivity : AppCompatActivity() {
 
     }
 
-    //To render some data on listview, we need 3 things
-    // 1) Data source - arraylist
-    // 2) View of each item - item_listview.xml
-    // 3) Adapter to bind that view with data source
-    // 4) Layout Manager
 
+    //ViewPager PagerAdapter and FragmentStatePagerAdapter
+    //FragmentStatePagerAdapter with TabLayout
 
-    //Horizontal views, Vertical view, Grid View
-
-
-    //to maintain checklist
-    var userList = arrayListOf<User>()
+    //ViewPager2
 
     private fun setUI() = binding.apply {
+        tabLayout.tabTextColors =
+            ColorStateList.valueOf(ResourcesCompat.getColor(resources, R.color.black, theme))
+        val homeTab =
+            tabLayout.newTab().setText(ContextCompat.getString(this@ThirdActivity, R.string.home))
+        val feedsTab =
+            tabLayout.newTab().setText(ContextCompat.getString(this@ThirdActivity, R.string.feeds))
+        val chatsTab =
+            tabLayout.newTab().setText(ContextCompat.getString(this@ThirdActivity, R.string.chats))
+
+        tabLayout.addTab(homeTab)
+        tabLayout.addTab(feedsTab)
+        tabLayout.addTab(chatsTab)
 
 
+        val adapter = FragmentViewPager(supportFragmentManager)
 
-        userList.add(User(R.mipmap.ic_launcher, "Joggers", "Post Graduate",false))
-        userList.add(User(R.mipmap.ic_launcher, "Track suits", "Post Graduate",false))
-        userList.add(User(R.mipmap.ic_launcher, "T-shirts", "Under Graduation",false))
-        userList.add(User(R.mipmap.ic_launcher, "Shirts", "Under Graduation",false))
-        userList.add(User(R.mipmap.ic_launcher, "Pants", "Working",false))
-        userList.add(User(R.mipmap.ic_launcher, "Yoga pants", "Working",false))
-
-
-//        for (i in 1..100){
-//            userList.add(User(R.mipmap.ic_launcher, "User $i", "Learning",false))
-//        }
-
-
-        recyclerView.layoutManager =
-            GridLayoutManager(this@ThirdActivity, 2)
-
-        recyclerView.adapter = UserAdapter(this@ThirdActivity, userList)
-
-
-        val imageList = ArrayList<Int>()
-
-        imageList.add(R.mipmap.image1)
-        imageList.add(R.mipmap.image2)
-        imageList.add(R.mipmap.image3)
-        imageList.add(R.mipmap.image2)
-        imageList.add(R.mipmap.image3)
-        imageList.add(R.mipmap.image1)
+        adapter.addFragment(
+            FragmentModels(
+                ContextCompat.getString(
+                    this@ThirdActivity,
+                    R.string.home
+                ), HomeFragment()
+            )
+        )
+        adapter.addFragment(
+            FragmentModels(
+                ContextCompat.getString(
+                    this@ThirdActivity,
+                    R.string.feeds
+                ), FeedsFragment()
+            )
+        )
+        adapter.addFragment(
+            FragmentModels(
+                ContextCompat.getString(
+                    this@ThirdActivity,
+                    R.string.chats
+                ), ChatFragment()
+            )
+        )
 
 
+        fragmentViewPager.setAdapter(adapter)
 
-        viewPager.adapter = NormalViewPagerAdapter(this@ThirdActivity, imageList)
+        tabLayout.setupWithViewPager(fragmentViewPager)
 
 
     }
 
 
-    private fun setListeners() = binding.apply {
+    //Adapters : PagerAdapter,FragmentStateAdapter
 
+
+    private fun setListeners() = binding.apply {
         logout.setOnClickListener {
             firebaseAuth.signOut()
             goToActivityWithFinish(SecondActivity::class.java)
         }
     }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
 
 
 }
