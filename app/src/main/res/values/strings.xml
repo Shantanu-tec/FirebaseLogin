@@ -25,4 +25,8 @@
     <string name="chats">Chats</string>
     <string name="feeds">Feeds</string>
     <string name="home">Home</string>
+    <string name="id">ID :</string>
+    <string name="title">Title :</string>
+    <string name="body">Body :</string>
+    <string name="userid">UserId :</string>
 </resources>

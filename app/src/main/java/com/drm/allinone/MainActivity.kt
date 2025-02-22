@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                 putString("Name", "SplashActivity")
             })
 
+
         CoroutineScope(Dispatchers.Main).launch {
             delay(2000)
 

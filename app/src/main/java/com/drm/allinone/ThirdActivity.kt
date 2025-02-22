@@ -21,6 +21,16 @@ import com.google.firebase.auth.FirebaseAuth
 
 class ThirdActivity : AppCompatActivity() {
 
+    //Android Application : Screen to the end user.
+    //Backend : httpCall
+    //API : http://baseUrl/V1/loginUser
+    //Traditional Http Call : Retrofit
+    //Asynchronous : Multiple Api Call
+    //Synchronous.
+    // Clean and simple
+    // Type Safe. Direct JSON/Rest api into Model Classes. Converter.
+    // Headers
+
     private lateinit var binding: ActivityThirdBinding
 
     private var firebaseAuth = FirebaseAuth.getInstance()
@@ -48,6 +58,8 @@ class ThirdActivity : AppCompatActivity() {
 
     //ViewPager2
     //FragmentStateAdapter
+
+
 
     private fun setUI() = binding.apply {
         tabLayout.tabTextColors =
@@ -122,6 +134,10 @@ class ThirdActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
     }
+
+    //Maintain
+    //Test cases
+    //Bug fixes
 
 
 
